@@ -1,23 +1,27 @@
-import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
-import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
+import type { Metadata } from 'next';
+import { Inter, Outfit, JetBrains_Mono } from 'next/font/google';
+import './globals.css';
+import { ThemeProvider } from '@/components/theme-provider';
 
 const inter = Inter({
-  variable: "--font-sans",
-  subsets: ["latin"],
+  variable: '--font-sans',
+  subsets: ['latin'],
 });
 
 const outfit = Outfit({
-  variable: "--font-heading",
-  subsets: ["latin"],
+  variable: '--font-heading',
+  subsets: ['latin'],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: '--font-mono',
+  subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
-  title: "Nextify Technologies | Building the Future",
-  description: "Nextify Technologies develops cutting-edge solutions in Software Engineering, Artificial Intelligence, Data Science, Quantitative Finance, and Digital Transformation.",
+  title: 'Mextify | The AI-Powered Career Operating System',
+  description:
+    'Mextify helps candidates discover opportunities, build profiles, and get hired while helping employers find the best talent with AI.',
 };
 
 export default function RootLayout({
@@ -28,21 +32,17 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${outfit.variable} antialiased`}
+      className={`${inter.variable} ${outfit.variable} ${jetbrainsMono.variable} antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-screen flex flex-col font-sans">
+      <body className="flex min-h-screen flex-col font-sans">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
-          <main className="flex-1 pt-20">
-            {children}
-          </main>
-          <Footer />
+          {children}
         </ThemeProvider>
       </body>
     </html>
