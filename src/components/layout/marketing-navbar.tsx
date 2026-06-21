@@ -14,9 +14,9 @@ function cn(...inputs: ClassValue[]) {
 }
 
 const navLinks = [
-  { name: 'Home', href: '/' },
-  { name: 'Features', href: '/#features' },
-  { name: 'For Employers', href: '/#employers' },
+  { name: 'Candidates', href: '/jobs' },
+  { name: 'Employers', href: '/employer' },
+  { name: 'Resources', href: '/resources' },
   { name: 'Pricing', href: '/pricing' },
 ];
 
@@ -31,11 +31,11 @@ export function Navbar() {
           {/* Logo */}
           <div className="flex flex-shrink-0 items-center">
             <Link href="/" className="group flex items-center gap-2">
-              <div className="bg-accent font-heading flex h-8 w-8 items-center justify-center rounded-lg text-xl font-bold text-white transition-transform group-hover:scale-105">
-                N
+              <div className="bg-foreground font-heading text-background flex h-8 w-8 items-center justify-center rounded-lg text-xl font-bold transition-transform group-hover:scale-105">
+                M
               </div>
-              <span className="font-heading text-2xl font-bold tracking-tight">
-                Nextify<span className="text-accent">.</span>
+              <span className="font-heading text-foreground text-2xl font-bold tracking-tight">
+                Mextify<span className="text-foreground/50">.</span>
               </span>
             </Link>
           </div>
@@ -47,18 +47,13 @@ export function Navbar() {
                 key={link.name}
                 href={link.href}
                 className={cn(
-                  'hover:text-accent relative rounded-md px-3 py-2 text-sm font-medium transition-colors',
-                  pathname === link.href ? 'text-accent' : 'text-foreground/80',
+                  'hover:text-foreground relative rounded-md px-3 py-2 text-sm font-medium transition-colors',
+                  pathname === link.href
+                    ? 'text-foreground'
+                    : 'text-foreground/70',
                 )}
               >
                 {link.name}
-                {pathname === link.href && (
-                  <motion.div
-                    layoutId="navbar-indicator"
-                    className="bg-accent absolute right-0 bottom-0 left-0 h-0.5"
-                    initial={false}
-                  />
-                )}
               </Link>
             ))}
           </nav>
@@ -67,10 +62,16 @@ export function Navbar() {
           <div className="hidden items-center space-x-4 md:flex">
             <ThemeToggle />
             <Link
-              href="/contact"
-              className="focus-visible:ring-ring bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-9 items-center justify-center rounded-md px-4 py-2 text-sm font-medium shadow transition-colors focus-visible:ring-1 focus-visible:outline-none"
+              href="/login"
+              className="text-foreground/70 hover:text-foreground text-sm font-medium transition-colors"
             >
-              Contact Us
+              Sign In
+            </Link>
+            <Link
+              href="/register"
+              className="bg-foreground text-background hover:bg-foreground/90 inline-flex h-9 items-center justify-center rounded-md px-4 py-2 text-sm font-medium shadow transition-colors"
+            >
+              Get Started
             </Link>
           </div>
 
@@ -79,7 +80,7 @@ export function Navbar() {
             <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-foreground hover:text-accent hover:bg-muted focus:ring-accent inline-flex items-center justify-center rounded-md p-2 focus:ring-2 focus:outline-none focus:ring-inset"
+              className="text-foreground hover:bg-muted inline-flex items-center justify-center rounded-md p-2 focus:outline-none"
             >
               <span className="sr-only">Open main menu</span>
               {isOpen ? (
@@ -99,7 +100,7 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="bg-background border-border border-b md:hidden"
+            className="bg-background border-border overflow-hidden border-b md:hidden"
           >
             <div className="flex flex-col space-y-1 px-2 pt-2 pb-3 sm:px-3">
               {navLinks.map((link) => (
@@ -110,21 +111,30 @@ export function Navbar() {
                   className={cn(
                     'flex items-center justify-between rounded-md px-3 py-3 text-base font-medium',
                     pathname === link.href
-                      ? 'bg-muted text-accent'
-                      : 'text-foreground hover:bg-muted',
+                      ? 'bg-muted text-foreground'
+                      : 'text-foreground/80 hover:bg-muted hover:text-foreground',
                   )}
                 >
                   {link.name}
                   <ChevronRight className="h-4 w-4 opacity-50" />
                 </Link>
               ))}
-              <Link
-                href="/contact"
-                onClick={() => setIsOpen(false)}
-                className="bg-primary text-primary-foreground mt-4 rounded-md px-3 py-3 text-center text-base font-medium"
-              >
-                Contact Us
-              </Link>
+              <div className="mt-4 flex flex-col gap-2 px-3">
+                <Link
+                  href="/login"
+                  onClick={() => setIsOpen(false)}
+                  className="bg-secondary text-secondary-foreground rounded-md px-3 py-3 text-center text-base font-medium"
+                >
+                  Sign In
+                </Link>
+                <Link
+                  href="/register"
+                  onClick={() => setIsOpen(false)}
+                  className="bg-foreground text-background rounded-md px-3 py-3 text-center text-base font-medium"
+                >
+                  Get Started
+                </Link>
+              </div>
             </div>
           </motion.div>
         )}

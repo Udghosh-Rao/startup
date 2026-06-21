@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Link from 'next/link';
-import { ArrowRight, Mail, MapPin, Phone } from 'lucide-react';
+import { Mail, MapPin } from 'lucide-react';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -12,35 +12,36 @@ export function Footer() {
           {/* Brand & Description */}
           <div className="space-y-4">
             <Link href="/" className="group flex items-center gap-2">
-              <div className="bg-accent font-heading flex h-8 w-8 items-center justify-center rounded-lg text-xl font-bold text-white">
-                N
+              <div className="bg-foreground font-heading text-background flex h-8 w-8 items-center justify-center rounded-lg text-xl font-bold">
+                M
               </div>
-              <span className="font-heading text-2xl font-bold tracking-tight">
-                Nextify<span className="text-accent">.</span>
+              <span className="font-heading text-foreground text-2xl font-bold tracking-tight">
+                Mextify<span className="text-foreground/50">.</span>
               </span>
             </Link>
             <p className="text-muted-foreground mt-4 max-w-xs text-sm leading-relaxed">
-              Building the future through technology, intelligence, and
-              innovation. We deliver cutting-edge solutions for enterprise
-              clients worldwide.
+              The premium platform connecting ambitious talent with fast-growing
+              companies.
             </p>
           </div>
 
-          {/* Quick Links */}
+          {/* Candidates */}
           <div>
-            <h3 className="font-heading mb-4 text-lg font-semibold">Company</h3>
+            <h3 className="font-heading mb-4 text-lg font-semibold">
+              Candidates
+            </h3>
             <ul className="space-y-3">
               {[
-                { name: 'Features', href: '/#features' },
-                { name: 'For Employers', href: '/#employers' },
-                { name: 'Pricing', href: '/pricing' },
+                { name: 'Browse Jobs', href: '/jobs' },
+                { name: 'Browse Companies', href: '/companies' },
+                { name: 'Career Resources', href: '/resources' },
+                { name: 'Create Profile', href: '/register' },
               ].map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-muted-foreground hover:text-accent group flex items-center text-sm transition-colors"
+                    className="text-muted-foreground hover:text-foreground text-sm transition-colors"
                   >
-                    <ArrowRight className="mr-2 -ml-5 h-3 w-3 opacity-0 transition-all duration-300 group-hover:ml-0 group-hover:opacity-100" />
                     {link.name}
                   </Link>
                 </li>
@@ -48,24 +49,25 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Core Areas */}
+          {/* Employers */}
           <div>
             <h3 className="font-heading mb-4 text-lg font-semibold">
-              Expertise
+              Employers
             </h3>
             <ul className="space-y-3">
               {[
-                'Software Engineering',
-                'Artificial Intelligence',
-                'Data Science',
-                'Quantitative Finance',
-                'Technology Consulting',
-              ].map((area) => (
-                <li key={area}>
-                  <span className="text-muted-foreground flex items-center text-sm">
-                    <span className="bg-accent mr-2 h-1.5 w-1.5 rounded-full" />
-                    {area}
-                  </span>
+                { name: 'Post a Job', href: '/employer' },
+                { name: 'Pricing', href: '/pricing' },
+                { name: 'Employer Brand', href: '/employer/brand' },
+                { name: 'Hiring Guide', href: '/resources/hiring' },
+              ].map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-muted-foreground hover:text-foreground text-sm transition-colors"
+                  >
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -76,26 +78,16 @@ export function Footer() {
             <h3 className="font-heading mb-4 text-lg font-semibold">Contact</h3>
             <ul className="space-y-4">
               <li className="text-muted-foreground flex items-start text-sm">
-                <MapPin className="text-accent mr-3 h-5 w-5 flex-shrink-0" />
-                <span>
-                  100 Innovation Drive
-                  <br />
-                  Suite 400
-                  <br />
-                  San Francisco, CA 94105
-                </span>
+                <MapPin className="text-muted-foreground mr-3 h-5 w-5 flex-shrink-0" />
+                <span>San Francisco, CA</span>
               </li>
               <li className="text-muted-foreground flex items-center text-sm">
-                <Phone className="text-accent mr-3 h-5 w-5 flex-shrink-0" />
-                <span>+1 (555) 123-4567</span>
-              </li>
-              <li className="text-muted-foreground flex items-center text-sm">
-                <Mail className="text-accent mr-3 h-5 w-5 flex-shrink-0" />
+                <Mail className="text-muted-foreground mr-3 h-5 w-5 flex-shrink-0" />
                 <a
-                  href="mailto:contact@nextify.tech"
-                  className="hover:text-accent transition-colors"
+                  href="mailto:hello@mextify.com"
+                  className="hover:text-foreground transition-colors"
                 >
-                  contact@nextify.tech
+                  hello@mextify.com
                 </a>
               </li>
             </ul>
@@ -104,17 +96,20 @@ export function Footer() {
 
         <div className="border-border flex flex-col items-center justify-between gap-4 border-t pt-8 md:flex-row">
           <p className="text-muted-foreground text-sm">
-            © {currentYear} Nextify Technologies. All rights reserved.
+            © {currentYear} Mextify. All rights reserved.
           </p>
           <div className="text-muted-foreground flex gap-4 text-sm">
             <Link
               href="/privacy"
-              className="hover:text-accent transition-colors"
+              className="hover:text-foreground transition-colors"
             >
-              Privacy Policy
+              Privacy
             </Link>
-            <Link href="/terms" className="hover:text-accent transition-colors">
-              Terms of Service
+            <Link
+              href="/terms"
+              className="hover:text-foreground transition-colors"
+            >
+              Terms
             </Link>
           </div>
         </div>

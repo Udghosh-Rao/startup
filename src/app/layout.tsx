@@ -19,9 +19,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Mextify | The AI-Powered Career Operating System',
+  title: 'Mextify | Find opportunities that move your career forward',
   description:
-    'Mextify helps candidates discover opportunities, build profiles, and get hired while helping employers find the best talent with AI.',
+    'Mextify connects ambitious talent with fast-growing companies. Discover roles, track applications, and build your professional profile.',
 };
 
 export default function RootLayout({
